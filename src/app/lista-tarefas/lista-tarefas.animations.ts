@@ -42,11 +42,11 @@ export const checkButtonTrigger = trigger('checkButton', [
 
 export const filterTrigger = trigger('filterAnimation', [
   transition(':enter', [
-    style({opacity: 0, width: 0}),
+    style({ opacity: 0, width: 0 }),
     animate('2000ms ease-out', keyframes([
-      style({offset: 0, opacity: 0, width: 0}),
-      style({offset: 0.8, opacity: 0.5, width: '*'}),
-      style({offset: 1, opacity: 1, width: '*'}),
+      style({ offset: 0, opacity: 0, width: 0 }),
+      style({ offset: 0.8, opacity: 0.5, width: '*' }),
+      style({ offset: 1, opacity: 1, width: '*' }),
     ]))
   ]),
   transition(':leave', [
@@ -86,3 +86,33 @@ export const formButtonTrigger = trigger('formButton', [
     }))
   ])
 ])
+
+export const flyInOutTrigger = trigger('flyInOut', [
+    transition(':enter', [
+      style({
+        width: '100%',
+        transform: 'translateX(-100%)',
+        opacity: 0
+      }),
+      group([
+        animate('0.3s 0.1s ease', style({
+          transform: 'translateX(0)',
+          width: '*'
+        })),
+        animate('0.3s ease', style({
+          opacity: 1
+        }))
+      ])
+    ]),
+    transition(':leave', [
+      group([
+        animate('0.3s ease', style({
+          transform: 'translateX(100%)',
+          width: '*'
+        })),
+        animate('0.3s 0.2s ease', style({
+          opacity: 0
+        }))
+      ])
+    ])
+  ])

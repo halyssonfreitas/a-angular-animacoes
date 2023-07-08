@@ -78,6 +78,9 @@
       (keyup)="filtrarTarefasPorDescricao(campoBusca)"
       >
   </div>
+  <ng-template #semTarefas>
+    <p @flyInOut class="ng-template ff-prompt">Olá! Ainda não há tarefas por aqui!</p>
+  </ng-template>
   <div *ngIf="tarefasFiltradas.length > 0, else semTarefas">
     <div
       @filterAnimation
